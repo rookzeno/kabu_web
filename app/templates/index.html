@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>株価予測コンペ</title>
+  </head>
+  <body>
+  <div class="xxx">
+    <h1>株価予測コンペ</h1>
+    <p>Submissions</p>
+    <form method="post" action="/send" enctype="multipart/form-data">
+      <label>名前：<input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10"></label>
+　　  <input type="file"  id="img_file" name="img_file" class="col-sm-4">
+  　　<input type="submit" value="送信" class="btn">
+  </div>
+  <div class="x2">
+    <p style="color: {{color}};"> {{massege}} </p>
+    <h2>ランキング</h2>
+    <p>{{name}} {{rank}}  {{kane}}</p>
+  </div>
+  <div class="x3">
+    <table border="1">
+      <tr>
+        <th>順位</th>
+        <th>名前</th>
+        <th>金額</th>
+      </tr>
+      {% set ns = namespace(cnt = 1) %}
+      {% for ranking in ranklist %}
+      <tr>
+        <td>{{ns.cnt}}位</td>
+        <td>{{ranking[0]}}</td>
+        <td>{{ranking[1]}}</td>
+      </tr>
+      {% set ns.cnt = ns.cnt + 1 %}
+      {% endfor %}
+    </table>  
+  </div>  
+
+  </body>
+</html>
+
+<style type="text/css">
+div {
+  background: #ffffff;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  height: 50%;
+  position:relative;
+}
+</style>
